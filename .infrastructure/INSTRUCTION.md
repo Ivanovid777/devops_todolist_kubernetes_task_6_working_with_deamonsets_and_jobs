@@ -4,7 +4,13 @@
     kubectl apply -f .infrastructure/daemonset.yml 
     kubectl apply -f .infrastructure/cronjob.yml 
 ```
-* how to check:
+* how to check cron:
 ```bash
-    kubectl logs cronfortodoapp<name-pod-cron> -n mateapp
-    kubectl logs daemonset<name-pod-daemonset> -n mateapp
+    kubectl logs cronfortodoapp-<pod-hash> -n mateapp
+    kubectl get jobs -n mateapp
+    kubectl describe cronjob cronfortodoapp -n mateapp
+    
+```
+* how to check daemonset:
+```bash
+    kubectl logs daemonset-<pod-hash> -n mateapp
